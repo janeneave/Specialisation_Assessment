@@ -1,5 +1,4 @@
 # CODING CHALLENGE
-# 25 MARKS
 """
 A) Design a parent class called Planet
 
@@ -26,8 +25,8 @@ class Planet:
         self.distance_from_earth_to_sun = 147000000
 
     def get_distance_to_earth(self):
-        distance_from_earth = self.distance_from_earth_to_sun - self.distance_from_sun
-        return f'distance to earth: {abs(distance_from_earth)}'
+        distance_from_earth = abs(self.distance_from_earth_to_sun - self.distance_from_sun)
+        return f'distance to earth: {distance_from_earth}'
 
 
 """
@@ -52,7 +51,8 @@ class Mercury(Planet):
 
     @staticmethod
     def happy_new_year():
-        return f'a year: 88 earth days'
+        year_length_in_earth_days = 88
+        return f'a year on Mercury: {year_length_in_earth_days} earth days'
 
 
 planet_mercury = Mercury('Mercury', 58000000, 'Terrestrial')
@@ -88,7 +88,8 @@ class Jupiter(Planet):
 
     @staticmethod
     def happy_new_year():
-        return f'a year: 4383 earth days'
+        year_length_in_earth_days = 4383
+        return f'a year on Jupiter: {year_length_in_earth_days} earth days'
 
 
 planet_jupiter = Jupiter('Jupiter', 77900000, 'Gas Giant', 80)
