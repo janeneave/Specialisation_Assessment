@@ -33,7 +33,7 @@ Additionally, the way collisions are dealt with affects memory usage. For exampl
 can increase the memory required to store the has keys, becuase it contains dynamic data structures (pointers).
 Memory constraints also depend on the type of data being stores, so moe complex data will increase the amount of
 memory needed. Becuase with this function each hash key is an integer the required memory to store this is not going
-to be too high. 
+to be too high.
 
 3.2) Walk through with no collision:
 Take the input string: 'cfg'
