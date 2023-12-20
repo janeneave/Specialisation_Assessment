@@ -1,0 +1,140 @@
+THEORY QUESTIONS (26 points)
+1.1 The deque module is part of which python library? (1 point)
+The deque module is part of the 'collections' library.
+
+
+1.2 What are 2 differences that distinguish a tree from a graph? (2 points)
+A graph is a set of vertices/nodes and edges, a tree is a set of nodes and edges.
+a) Whilst trees have a hierarchical structure that stems from a single, unique root note,
+graphs do not have a unique node known as a root and any node has the potential to connect to any other node.
+b) In a tree there are/can be no cycles, which means there is only a single path between any 2 nodes,
+however a graph can contain cycles, and even self-loops.
+
+
+1.3 Give the definitions of time complexity and space complexity (2 points)
+Time Complexity: The time complexity of an algorithm is used as an indicator/measure of
+how quickly an algorithm runs. It is a measure of the length of time it takes for
+an algorithm to run, and is dependent on size of the input.
+Space Complexity: The space complexity of an algorithm is a measure of the amount of auxiliary memory space
+that the algorithm requires in order to run, is dependent on size of the input.
+Both of these are used as part of the process to determine how efficient an algorithm is, and are both
+expressed using Big O Notation.
+
+1.4 Describe the bubble sort algorithm and its complexity. What is guaranteed at the end of the first pass? (5 points)
+The Bubble Sort is a simple sorting algorithm that compares adjacent elements and then repeatedly swaps them if they are in
+the wrong order as it steps through the input (list). It will swap them to sort them in the correct order,
+i.e. moving smallest value to the beginning.
+It begins by stepping through the list and comparing adjacent pairs of elements, swapping them if they are in the wrong order.
+By the end of the first pass of the list of elements, the largest element is guranteed to be in the final sorted position
+at the end of the list.
+Bubble Sort passes through the unsorted part of the list repeatedly until the list is sorted, this means the
+time complexity of this algorithm is O(n^2) in the worst case (and O(N) in the best case),
+whilst the space complexity is constant, at O(1).
+
+
+1.5 Explain what LIFO and FIFO are and how each works in practice with a named data structure (8 points)
+Both of these principles are ways of managing the order in which the elements of a collection can be accessed.
+LIFO (Last In, First Out): LIFO is the principle that means the last element added to the data structure is the first one to be removed.
+It operates like a stack, and is like a stack of books whereby if you pile them up from a surface you must always first remove
+the one at the top of the stack, that was last put there.
+An example is the 'Stack' data structure. In stack data structures elements can be added (pushed) or removed (popped) from
+the same end, the 'top', of the stack. Below is some example code of what a stack class might look like with push and pop
+methods to add and remove elements.
+
+# Stack: Last in first out, LIFO object
+class Stack:
+    def __init__(self, *args):
+        self.storage = []
+        for arg in args:
+            self.push(arg)
+
+    def push(self, element):
+        self.storage.append(element)
+        return self.storage
+
+    def pop(self):
+        value = self.storage[-1]
+        self.storage = self.storage[:-1:]
+        return value
+
+    def length(self):
+        return len(self.storage)
+
+    def print_list(self):
+        return print(self.storage)
+
+
+book_stack = Stack(1, 2, 3, 4)
+book_stack.print_list()
+book_stack.push(5)
+book_stack.print_list()
+print(book_stack.length())
+book_stack.pop()
+book_stack.print_list()
+
+FIFO (First In, First Out): FIFO is the principle that means the first element added is also the first one to be removed.
+It operates like a queue to pay for you shopping, whereby the first person in the queue is also the first person "served",
+and when other people join the queue they join to the back of the queue.
+An example data structure is the dequeue data structure available in the 'collections' library.
+In a queue elements get added (enqueued) to the back/end of the queue and removed (dequeued) from the first position/front.
+Below is an example of what a Queue class might qppear like, with enqueue and dequeue methods to add and remove elements.
+
+# Queue: first in first out, FIFO object
+class Queue:
+    def __init__(self, *args):
+        self.storage = []
+        for arg in args:
+            self.enqueue(arg)
+
+    def enqueue(self, element):
+        self.storage.append(element)
+        return self.storage
+
+    def dequeue(self):
+        value = self.storage[0]
+        self.storage = self.storage[1::]
+        return value
+
+    def length(self):
+        return len(self.storage)
+
+    def print_list(self):
+        return print(self.storage)
+
+
+phone_calls = Queue(1, 2, 3)
+phone_calls.print_list()
+phone_calls.enqueue(4)
+phone_calls.print_list()
+print(phone_calls.dequeue())
+phone_calls.print_list()
+
+
+1.6 What is a Balanced Binary Tree and what would be the best root? Walkthrough how you search using this structure.(8 Points)
+Balanced Binary Tree: A binary tree is a hierarchical structure made up of edges and nodes, made up of a root node which branches into
+right and left subtrees. A balanced binary tree, sometimes referred to as a 'Perfect Binary Tree' is a type of binary tree in which
+the difference in depth/height between the left and right subtrees as any node is no larger than one. This works to ensure the
+tree remains relatively balanced overall, which promotes efficient searching and inserting operations.
+
+The best root node for a balanced binary tree is normally one that is approximately or near enough in the middle of the sorted order
+of elements. So it is chosen based on the data distribution to maintain balance, aiming for roughly equal number of nodes in
+the left and right subtrees to aid searching the tree. Oftentimes, the elements are sorted and then a median element/value is chosen
+to be the root, which is a process that I believe can be recursively compeleted used to construct an entire tree. Most typically, when
+the binary tree is constructed, values which are smaller than the root node will be put as nodes into the left subtree, whilst value
+which are larger than the root node with be added to the right subtree.
+
+Searching a balanced binary tree follows the binary search principle where the search key is compared against the current node
+and then it is decided upon whether to search the left or right subtree, or it will determine that the current node is the
+one being searched for. To search a balanced binary tree, you begin at the root, which will first be compared against the target
+value/search key. Most typically, if the target value is smaller that the root note, the search will move to the left subtree, if it is larger, it will
+move to the right subtree. This is largely what contributes to the efficiency of searching a balanced (or pretty much most) binary tree,
+because the root node acting at the starting off point means you can quickly "eliminate" half of the elements in your search and
+only then have to search the otehr half. Once the search has determined which subtree to move down, the current node will become either the
+left or right child node of the root node, and this will then be compared against the target value. If it is determined that the
+current node is the same as the target value, the search will cease, however if it is not, the search will once again determine
+whether to go down the left of right edge to the child node of the new current node
+based on the value of the target and if it is smaller or larger than the value is of the current node.
+This process of comparing to the current node, determining which path direction to take in the tree,
+is repeated until the current node is compared and found to equal the target value or a
+leaf node it found.
+The balanced nature ensures that the search is efficient, with a time complexity of O(log n) whereby n is the number of nodes in the tree.
