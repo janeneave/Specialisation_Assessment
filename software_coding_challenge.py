@@ -55,9 +55,6 @@ class Mercury(Planet):
         return f'a year: 88 earth days'
 
 
-# TEST CASE
-pass
-
 planet_mercury = Mercury('Mercury', 58000000, 'Terrestrial')
 print(planet_mercury.name)
 print(planet_mercury.distance_from_sun)
@@ -94,9 +91,6 @@ class Jupiter(Planet):
         return f'a year: 4383 earth days'
 
 
-# TEST CASE
-pass
-
 planet_jupiter = Jupiter('Jupiter', 77900000, 'Gas Giant', 80)
 print(planet_jupiter.name)
 print(planet_jupiter.distance_from_sun)
@@ -105,6 +99,3 @@ print(planet_jupiter.number_of_moons)
 print(planet_jupiter.get_distance_to_earth())
 print(planet_jupiter.happy_new_year())
 
-pass
-# TEST CASE
-pass
