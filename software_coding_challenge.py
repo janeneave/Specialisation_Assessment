@@ -1,5 +1,4 @@
 # CODING CHALLENGE
-# 25 MARKS
 """
 A) Design a parent class called Planet
 
