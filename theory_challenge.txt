@@ -9,16 +9,12 @@ slot that the hash key is assigned to in the hash table.
 def simple_hash_function(input, size_of_table=101):
     sum(ord(char) for char in input_string) % size_of_table
 
-MEMORY CONSTRAINTS
-This is referring to the amount of memory required to store the hash table and process the has data. In regards
-to the has function I designed, there are a few factors which will influence the
-
 HASH COLLISIONS
 It is often best to use a prime number for the table_size,
 becuase this can minimise collisions by spreading out the numbers more evenly,
 therefore this will be used as a default table_size. The above hash function I designed
 can't completely eradicate the chances of collisions becuase two strings could have the same ASCII code sum.
-However having a table_size be a prime number can help with this. Additionally, another way to avert
+However, having a table_size be a prime number can help with this. Additionally, another way to avert
 collisions is to use separate chaining. This means that each slot of the hash table is a linked list,
 and if there is more thn one of the same hash key that would then mean there is more than one has key assigned to
 the same slot, each hash key would be stored in the linked list for that slot. Another thing that could be done
@@ -27,6 +23,17 @@ likely to produce unique combination and unique hash_keys.
 Becuase this is a simple hash function it would likely only be able to be used for a small set of data/inputs
 otherwise it is likely for the number of hash collisions to be high, and a more complex hash function
 would need to be implemented.
+
+MEMORY CONSTRAINTS
+This is referring to the amount of memory required to store the hash table and process the has data. In regards
+to the has function I designed, there are a few factors which affect this. The table_size dictates the size of
+the hash table which will store the hash keys, set at a default for 101. This is a relatively small table,
+which means whilst it won't take up too much memory, it could increase the likelihood of collision.
+Additionally, the way collisions are dealt with affects memory usage. For example, the use of linked lists
+can increase the memory required to store the has keys, becuase it contains dynamic data structures (pointers).
+Memory constraints also depend on the type of data being stores, so moe complex data will increase the amount of
+memory needed. Becuase with this function each hash key is an integer the required memory to store this is not going
+to be too high. 
 
 3.2) Walk through with no collision:
 Take the input string: 'cfg'
