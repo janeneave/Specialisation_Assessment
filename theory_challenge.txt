@@ -1,0 +1,63 @@
+3.1) Basic Design for a Hash Function
+The simple hash function I designed will take the ASCII code of every character of an input string
+and sum these values, and then it will take the modulo of this sum based on the size of the hash table
+they are to be stored in. Using the modulo means that the result of the has function find the sum of ASCII values
+it limited to a specific range, this corresponds to the size of the hash table which is where the hash keys are
+stored. It will use this number to store the hash keys in the hash table, whereby the modulo number is the
+slot that the hash key is assigned to in the hash table.
+
+def simple_hash_function(input, size_of_table=101):
+    sum(ord(char) for char in input_string) % size_of_table
+
+MEMORY CONSTRAINTS
+This is referring to the amount of memory required to store the hash table and process the has data. In regards
+to the has function I designed, there are a few factors which will influence the
+
+HASH COLLISIONS
+It is often best to use a prime number for the table_size,
+becuase this can minimise collisions by spreading out the numbers more evenly,
+therefore this will be used as a default table_size. The above hash function I designed
+can't completely eradicate the chances of collisions becuase two strings could have the same ASCII code sum.
+However having a table_size be a prime number can help with this. Additionally, another way to avert
+collisions is to use separate chaining. This means that each slot of the hash table is a linked list,
+and if there is more thn one of the same hash key that would then mean there is more than one has key assigned to
+the same slot, each hash key would be stored in the linked list for that slot. Another thing that could be done
+perhaps to avoid hash collisions it to combine multiple pieces of input / information which might be more
+likely to produce unique combination and unique hash_keys.
+Becuase this is a simple hash function it would likely only be able to be used for a small set of data/inputs
+otherwise it is likely for the number of hash collisions to be high, and a more complex hash function
+would need to be implemented.
+
+3.2) Walk through with no collision:
+Take the input string: 'cfg'
+Take an ASCII code for each character of the input string:
+'c' = 99
+'f' = 102
+'g' = 103
+Sum the character's ASCII codes:
+sum() = 304
+Find the modulo of the summed ASCII codes of the tabel_size, in this case using the prime number 101.
+304 % 101 = 1 -> This is the index of the hash table where the hash key will be stored in a linked
+list at this slot, to account for inputs which have the same ASCII sum.
+
+3.3) Walk through with collision:
+'lies'
+'l' = 108
+'i' = 105
+'e' = 103
+'s' = 115
+429 % 101 = 25
+
+'foes'
+'f' = 102
+'o' = 111
+'e' = 103
+'s' = 115
+sum() = 304
+429 % 101 = 25
+
+The sum of ASCII values for 'lies' and 'foes' is the same, meaning a hash
+collision would occur in this scenario, as they would both be placed to be stored at index 25 in the hash tabel.
+Therefore, as I intend to use separate chaining using linked lists at each index,
+meaning 'lies' would be stored in the linked list at hash tables index 25,
+and after wards 'foes' would be added to the linked list and stored.
